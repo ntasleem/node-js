@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>To-Do List App</title>
+<script
+src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.m
+in.js"></script>
+<style>
+div {
+margin: auto;
+padding: 10px;
+width: 50%;
+text-align: center;
+border: 1px solid black;
+}
+table, th, td {
+border: 2px solid black;
+border-collapse: collapse;
+text-align: center;
+align-self: stretch;
+margin: auto;
+padding: 5px;
+}
+</style>
+</head>
+<body>
+<div ng-app="lab6" ng-controller="cntr6">
+<h2>Lab6 - To-Do List</h2>
+<p>
+<input type="text" ng-model="newTask" placeholder="Add new
+task" required>
+<button type="submit" ng-click="addTask()">Add Task</button>
+</p>
+<table>
+<tr>
+<th>Tasks</th>
+<th>Operations</th>
+</tr>
+<tr ng-repeat="task in tasks">
+<td style="text-align: left;">
+<span ng-show="!task.editing">{{ task.name }}</span>
+<input type="text" ng-model="task.name"
+ng-show="task.editing">
+</td>
+<td>
+<button ng-click="editTask(task)">Edit</button>
+<button ng-click="deleteTask(task)">Delete</button>
+</td>
+</tr>
+</table>
+</div>
+<script>
+angular.module('lab6', [])
+.controller('cntr6', function($scope) {
+$scope.tasks = [
+{ name: 'Revise DBMS'},
+{ name: 'Practice Angular Programs' },
+{ name: 'Practice SQL Queries' },
+{ name: 'Design one page of DBMS Project' }
+];
+$scope.addTask = function() {
+$scope.tasks.push({ name: $scope.newTask });
+$scope.newTask = '';
+};
+$scope.editTask = function(task) {
+task.editing = !task.editing;
+};
+$scope.deleteTask = function(task) {
+var index = $scope.tasks.indexOf(task);
+$scope.tasks.splice(index, 1);
+};
+});
+</script>
+</body>
+</html>
