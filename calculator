@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-
+8">
+
+<title>Lab 3</title>
+<script type="text/javascript"
+src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.m
+in.js">
+</script>
+<style>
+div {
+margin: auto;
+padding: 10px;
+width: 50%;
+text-align: center;
+border: 1px solid black;
+}
+</style>
+</head>
+<body ng-app="">
+<div>
+<h1> Lab3 - Simple Calculator </h1>
+
+<p>Enter value 1: <input type="number" ng-model="num1" ng-
+init="num1=10">
+
+</p>
+
+<p>Enter value 2: <input type="number" ng-model="num2" ng-
+init="num2=5">
+
+</p>
+<div>
+<h3>Addition: {{num1}} + {{num2}} = {{num1+num2}}</h3>
+<h3>Subtraction: {{num1}} - {{num2}} = {{num1-num2}}</h3>
+<h3>Multiplication: {{num1}} * {{num2}} = {{num1*num2}}</h3>
+<h3>Division: {{num1}} / {{num2}} = {{num1/num2}}</h3>
+</div>
+</div>
+</body>
+</html>
