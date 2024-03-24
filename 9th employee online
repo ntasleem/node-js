@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employees Application</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <style>
+    div {
+      margin: auto;
+      padding: 10px;
+      width: 50%;
+      text-align: center;
+      border: 1px solid black;
+    }
+    table, th, td {
+      border: 2px solid black;
+      border-collapse: collapse;
+      text-align: center;
+      align-self: stretch;
+      margin:auto;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body ng-app="lab9">
+  <div ng-controller="ctrl9">
+    <h2>Lab 9 - Employee App using Angular Filters</h2>
+    <input type="text" placeholder="Search by name" ng-model="searchText.name" /><br /><br />
+    <input type="text" placeholder="Search by salary" ng-model="searchText.salary" /><br /><br />
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Salary</th>
+        <th>City</th>
+      </tr>
+      <tr ng-repeat="e in employees | filter:searchText">
+        <td>{{e.name}}</td>
+        <td>{{e.gender}}</td>
+        <td>{{e.salary}}</td>
+        <td>{{e.city}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    var lab9 = angular.module("lab9", []);
+    lab9.controller("ctrl9", function($scope) {
+      $scope.employees = [
+        { name: "Ram", gender: "Male", salary: 55500.00, city: "Bangalore" },
+        { name: "Lakshman", gender: "Male", salary: 56000.00, city: "Delhi" },
+        { name: "Seetha", gender: "Female", salary: 55500.00, city: "Hyderabad" },
+        { name: "Ram", gender: "Male", salary: 55500.00, city: "Delhi" },
+        { name: "Ram", gender: "Male", salary: 44000.00, city: "Mangalore" }
+      ];
+    });
+  </script>
+</body>
+</html>
