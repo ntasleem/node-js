@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lab 11 - Student list</title>
+<style>
+#one {
+margin: auto;
+padding: 10px;
+width: 50%;
+border: 1px solid black;
+}
+ul, li{
+margin: 3px;
+font-size: 25px;
+}
+h1{
+text-align: center;
+}
+</style>
+</head>
+<body ng-app="lab11"
+ng-controller="con11">
+<div id="one">
+<h1>Lab 11 - Angular using String Filters</h1>
+<h2><p>Display in Uppercase: <input type="checkbox"
+ng-model="upper"></p>
+Student List:</h2>
+<UL ng-show="upper">
+<li ng-repeat="stu in students">{{stu | uppercase}}
+</li>
+</UL>
+<UL ng-hide="upper">
+<li ng-repeat="stu in students">{{stu | lowercase}}
+</li>
+</UL>
+
+</div>
+<script type="text/javascript"
+src="https://ajax.googleapis.com/ajax/libs/angularjs
+/1.8.2/angular.min.js">
+</script>
+<script type="text/javascript">
+var lab11 = angular.module('lab11', []);
+lab11.controller("con11", function ($scope) {
+$scope.students = [ "Isaac Newton",
+"Albert Einstein",
+"Charles Darwin",
+"Alexander Graham Bell"
+
+];
+});
+</script>
+</body>
+</html>
