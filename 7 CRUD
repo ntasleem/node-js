@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>User Management</title>
+<script
+src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.m
+in.js"></script>
+<style>
+table {
+width: 100%;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid #ddd;
+padding: 8px;
+text-align: left;
+}
+th {
+background-color: #f2f2f2;
+}
+button {
+cursor: pointer;
+}
+</style>
+</head>
+<body ng-app="lab7">
+<div ng-controller="ctrl7">
+<h2>Lab 7 - CRUD Operations - User Management</h2>
+<input type="text" ng-model="newUser.name"
+placeholder="Name">
+<input type="email" ng-model="newUser.email"
+placeholder="Email">
+<button type="submit" ng-click="addUser()">
+Add User
+</button>
+
+ACADEMIC YEAR -2023-24
+
+<table>
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Action</th>
+</tr>
+<tr ng-repeat="user in users">
+<td><span ng-show="!user.editing">{{user.name}}
+</span>
+<input type="text"
+ng-model="user.name"
+
+ng-show="user.editing"></td>
+
+<td><span ng-show="!user.editing">{{user.email}}
+</span>
+<input type="text"
+ng-model="user.email"
+ng-show="user.editing"></td>
+
+<td>
+<button ng-click="editUser(user)"> Edit
+</button>
+<button ng-click="deleteUser(user)"> Delete
+</button>
+</td>
+</tr>
+</table>
+</div>
+<script>
+var lab7 = angular.module('lab7', []);
+lab7.controller('ctrl7', function ($scope) {
+$scope.users = [
+{id: 1, name: 'Rashi', email: 'rashi@rymec.com' },
+{id: 2, name: 'Sai Reddy',
+email: 'sreddy@rymec.com' },
+{ id: 3, name: 'Sandhya KR',
+email: 'sandykr@rymec.com' }
+];
+$scope.newUser = {};
+
+ACADEMIC YEAR -2023-24
+
+$scope.addUser = function () {
+$scope.newUser.id = $scope.users.length + 1;
+$scope.users.push(angular.copy($scope.newUser));
+$scope.newUser = {};
+};
+$scope.editUser = function (user) {
+user.editing = !user.editing;
+};
+$scope.deleteUser = function (user) {
+var index = $scope.users.indexOf(user);
+$scope.users.splice(index, 1);
+};
+});
+</script>
+</body>
+</html>
