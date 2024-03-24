@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>Lab Program 2</title>
+<script type = "text/javascript"
+src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/an
+gular.min.js"></script>
+<script type="text/javascript">
+var app = angular.module("myApp2",[]);
+app.controller("myCtrl2", function($scope){
+$scope.items = ["chocolates", "grocessories"];
+$scope.addItem = function(){
+$scope.items.push($scope.newItem);
+$scope.newItem="";
+};
+$scope.deleteItem = function(){
+var index =
+$scope.items.indexOf($scope.newItem);
+if(index != -1)
+$scope.items.splice(index, 1);
+$scope.newItem = "";
+}
+})
+</script>
+</head>
+<body ng-app="myApp2">
+<div ng-controller="myCtrl2">
+<h1>Shopping list</h1>
+Enter the item: <input type="text" ng-model="newItem">
+<button ng-click="addItem()"> Add Item</button>
+<button ng-click="deleteItem()">Delete Item</button>
+<ul>
+<li ng-repeat="x in items">{{x}}</li>
+</ul>
+</div>
+</body>
+</html>
