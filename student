@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="lab5" ng-controller="con5">
+<head>
+    <title>Document</title>
+    <style>
+        #one {
+            margin: auto;
+            padding: 10px;
+            width: 50%;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+        table, th, td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            align-self: stretch;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="one">
+
+    <p>Want to insert new Student? <input type="checkbox" ng-model="isInsertNew"></p>
+
+    <div ng-show="isInsertNew">
+        <p>Name: <input type="text" ng-model="name"></p>
+        <p>USN: <input type="text" ng-model="usn"></p>
+        <p>Sem: <input type="text" ng-model="sem"></p>
+        <p>CGPA: <input type="text" ng-model="cgpa"></p>
+        <p><button ng-click="insert()">Insert</button></p>
+    </div>
+    <table>
+        <tr>
+            <th>Name</th>
+
+            ACADEMIC YEAR -2023-24
+
+            <th>USN</th>
+            <th>Sem</th>
+            <th>CGPA</th>
+        </tr>
+        <tr ng-repeat="stu in students">
+            <td>{{stu.name}}</td>
+            <td>{{stu.usn}}</td>
+            <td>{{stu.sem}}</td>
+            <td>{{stu.cgpa}}</td>
+        </tr>
+        <tr>
+            <td colspan="4">Number of Students: {{students.length}}
+            </td>
+        </tr>
+    </table>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<script>
+    var lab5 = angular.module('lab5', []);
+    lab5.controller("con5", function ($scope) {
+        $scope.students = [
+            { name: "ABC", usn: "3VC20CS001", sem: 5, cgpa: 9.25 },
+            { name: "PQR", usn: "3VC20CS009", sem: 3, cgpa: 5.78 }
+        ];
+        $scope.insert = function () {
+            $scope.students.push({ name: $scope.name, usn: $scope.usn, sem: $scope.sem, cgpa: $scope.cgpa });
+        }
+    })
+</script>
+</body>
+</html>
