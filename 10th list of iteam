@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>To-Do List App</title>
+<script
+src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.m
+in.js"></script>
+<style>
+div {
+margin: auto;
+padding: 10px;
+width: 50%;
+text-align: center;
+border: 1px solid black;
+}
+table, th, td {
+border: 2px solid black;
+border-collapse: collapse;
+text-align: center;
+margin: auto;
+padding: 8px 20px;
+font-size: 20px;
+}
+</style>
+</head>
+<body ng-app="lab10">
+<div ng-controller="cntr10">
+<h1>Lab10 - List of Items</h1>
+<p>
+<input type="text"
+ng-model="newItem"
+placeholder="Add new Item"
+required>
+<button type="submit"
+ng-click="addItem()">Add Item</button>
+</p>
+<table>
+<tr>
+<th>Item</th>
+<th>Operations</th>
+</tr>
+<tr ng-repeat="item in items">
+<td> {{ item }} </td>
+<td>
+<button ng-click="deleteItem(item)">
+Delete</button>
+</td>
+</tr>
+</table>
+</div>
+<script>
+var lab10 = angular.module('lab10', [])
+lab10.controller('cntr10', function ($scope) {
+$scope.items = [
+"Books", "Chairs", "Tables", "Fan", "AC", "TV"
+];
+$scope.addItem = function () {
+$scope.items.push($scope.newItem);
+$scope.newItem = '';
+};
+$scope.deleteItem = function (item) {
+var index = $scope.items.indexOf(item);
+$scope.items.splice(index, 1);
+};
+});
+</script>
+</body>
+</html>
