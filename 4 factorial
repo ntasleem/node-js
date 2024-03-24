@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head> <title>Lab 4</title>
+<style>
+div {
+border: 1px solid black;
+margin: auto;
+width:50%;
+padding: 5px;
+text-align:center;
+}
+</style>
+</head>
+<body ng-app="app1">
+<div ng-controller = "ctrl1">
+<h1>
+Lab 4 - Square and Factorial
+</h1>
+<p>Enter value 1: <input type="number" ng-model="num1"
+default=10></p>
+<p><button ng-click="calculate()">Calculate</button></p>
+<h3>Factorial = {{ fact }}</h3>
+<h3>Square = {{square}}</h3>
+</div>
+<script type="text/javascript"
+src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2
+/angular.min.js">
+</script>
+<script type="text/javascript">
+var app = angular.module("app1", [])
+app.controller("ctrl1", function ($scope) {
+$scope.fact = 2;
+$scope.square = 4;
+$scope.num1 = 2;
+$scope.calculate = function () {
+$scope.fact = 1;
+for (i = 1; i <= $scope.num1; i++)
+$scope.fact = $scope.fact * i;
+$scope.square = $scope.num1 * $scope.num1;
+}
+})
+</script>
+</body>
+
+ACADEMIC YEAR -2023-24
+
+</html>
