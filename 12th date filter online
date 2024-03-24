@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AngularJS Date Filter Example</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<style>
+div {
+  margin: auto;
+  padding: 10px;
+  width: 50%;
+  text-align: center;
+  border: 1px solid black;
+}
+</style>
+</head>
+<body ng-app="lab12">
+<div ng-controller="cnt12">
+<h1 style="color:red">Lab 12 - Date Filter Example</h1>
+<h3>Select the Format:
+<select ng-model="dateFilter">
+<option value="yyyy-MM-dd">yyyy-MM-dd</option>
+<option value="dd/MM/yyyy">dd/MM/yyyy</option>
+<option value="dd/MMM/yyyy">dd-mon-yyyy</option>
+<option value="MMMM dd, yyyy">Month dd, yyyy</option>
+<option value="EEEE - MMM dd, yyyy">Day - Month dd, yyyy</option>
+<option value="short">Short Date</option>
+<option value="fullDate">Full Date</option> <!-- You can use 'fullDate' as an alternative to 'medium' -->
+</select>
+</h3>
+<h2>
+<p>Current Date: {{ currentDate | date : dateFilter}}</p>
+</h2>
+</div>
+<script>
+var lab12 = angular.module('lab12', []);
+lab12.controller('cnt12', function ($scope) {
+  $scope.currentDate = new Date();
+});
+</script>
+</body>
+</html>
